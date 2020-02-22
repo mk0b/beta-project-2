@@ -33,12 +33,8 @@ const perPage = 10;
 // Call show the showPage() function passing in the dataList variable and 1 to display the first page
 
 const showPage = (list, page) => {
-   //just seeing the data I am working with.
-   console.log('Data list: ', list);
-
    //emptying the studentContainer
    studentContainer.innerHTML = '';
-   console.log(studentContainer);
 
    //declaring some variables to clean up the for loop
    const startIndex = (page * perPage) - perPage;
@@ -103,7 +99,6 @@ showPage(dataList, 1);
 // Call show the appendPageLinks() function passing in the dataList variable
 
 const appendPageLinks = (list) => {
-   console.log('appendPageLinks List: ', list);
    //empty linkContainer
    linkContainer.innerHTML = '';
 
@@ -122,11 +117,8 @@ const appendPageLinks = (list) => {
    linkContainer.addEventListener('click', (event) => {
       const clickedLink = event.target;
       if (clickedLink.tagName === 'A') {
-         console.log('A link was clicked.');
          const links = document.querySelectorAll('.link-list a');
-         console.log('Links: ', links);
          for (let jj = 0; jj < links.length; jj++) {
-            console.log('jj', jj);
             links[jj].className = '';
          }
          clickedLink.className = 'active';
