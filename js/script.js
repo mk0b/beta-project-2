@@ -28,23 +28,43 @@ const perPage = 10;
          // Or you can use the handy insertAdjacentHTML() method
 
          // HTML template to add student to the DOM
-         const studentTemplate = `
-            <li class="student-item cf">
-               <div class="student-details">
-                  <img class="avatar" src="${list[i].picture.large}">
-                  <h3>${list[i].name.first} ${list[i].name.last}</h3>
-                  <span class="email">${list[i].email}</span>
-               </div>
-               <div class="joined-details">
-                  <span class="date">Joined ${formatDate(list[i].registered.date)}</span>
-               </div>
-            </li>
-         `;
 
 // After the showPage function definition,
 // Call show the showPage() function passing in the dataList variable and 1 to display the first page
 
+const showPage = (list, page) => {
+   //just seeing the data I am working with.
+   console.log('Data list: ', list);
 
+   //emptying the studentContainer
+   studentContainer.innerHTML = '';
+   console.log(studentContainer);
+
+   //declaring some variables to clean up the for loop
+   const startIndex = (page * perPage) - perPage;
+   const endIndex = page * perPage;
+
+   //looping through the student data
+   for (let i = 0; i < list.length; i++) {
+      if (i >= startIndex && i < endIndex) {
+         const studentTemplate = `
+         <li class="student-item cf">
+            <div class="student-details">
+               <img class="avatar" src="${list[i].picture.large}">
+               <h3>${list[i].name.first} ${list[i].name.last}</h3>
+               <span class="email">${list[i].email}</span>
+            </div>
+            <div class="joined-details">
+               <span class="date">Joined ${formatDate(list[i].registered.date)}</span>
+            </div>
+         </li>`;
+         //displaying students that meet the criteria
+         studentContainer.innerHTML += studentTemplate;
+      }
+   }
+}
+
+showPage(dataList, 1);
 
 // 2. THE APPEND PAGE LINKS FUNCTION
 
@@ -62,7 +82,7 @@ const perPage = 10;
       // Or you can use the handy insertAdjacentHTML() method
 
       // HTML template to add link to the DOM
-      const studentTemplate = `<li><a href="#">${i + 1}</a></li>`
+      //studentTemplate = `<li><a href="#">${i + 1}</a></li>`
 
    // Set the className of the linkContainer.firstElementChild.firstElementChild to 'active'
 
@@ -81,6 +101,12 @@ const perPage = 10;
 
 // After the appendPageLinks function definition,
 // Call show the appendPageLinks() function passing in the dataList variable
+
+const appendPageLinks = () => {
+
+}
+
+appendPageLinks();
 
 
 // Feel free to try out adding the search feature and pagination search results
