@@ -77,7 +77,7 @@ showPage(dataList, 1);
 
    // Loop once for every link - (let i = 0; i < linkCount; i++) 
 
-      // Use the LinkTemplate below to add links to studentContainer
+      // Use the LinkTemplate below to add links to FIXME: studentContainer (should say linkContainer)
       // You can concatenate the template to the innerHTML with +=
       // Or you can use the handy insertAdjacentHTML() method
 
@@ -114,6 +114,24 @@ const appendPageLinks = (list) => {
       const linkTemplate = `<li><a href="#">${i + 1}</a></li>`;
       linkContainer.innerHTML += linkTemplate;
    }
+
+   //setting the first link to be be active
+   linkContainer.firstElementChild.firstElementChild.className = 'active';
+
+   //event listener for linkContainer
+   linkContainer.addEventListener('click', (event) => {
+      const clickedLink = event.target;
+      if (clickedLink.tagName === 'A') {
+         console.log('A link was clicked.');
+         const links = document.querySelectorAll('.link-list a');
+         console.log('Links: ', links);
+         for (let jj = 0; jj < links.length; jj++) {
+            console.log('jj', jj);
+            links[jj].className = '';
+         }
+         clickedLink.className = 'active';
+      }
+   });
 }
 
 appendPageLinks(dataList);
