@@ -82,7 +82,7 @@ showPage(dataList, 1);
       // Or you can use the handy insertAdjacentHTML() method
 
       // HTML template to add link to the DOM
-      //studentTemplate = `<li><a href="#">${i + 1}</a></li>`
+      //
 
    // Set the className of the linkContainer.firstElementChild.firstElementChild to 'active'
 
@@ -102,11 +102,21 @@ showPage(dataList, 1);
 // After the appendPageLinks function definition,
 // Call show the appendPageLinks() function passing in the dataList variable
 
-const appendPageLinks = () => {
+const appendPageLinks = (list) => {
+   console.log('appendPageLinks List: ', list);
+   //empty linkContainer
+   linkContainer.innerHTML = '';
 
+   const linkCount = Math.ceil(list.length / perPage);
+
+   //loop over for each link
+   for (let i = 0; i < linkCount; i++) {
+      const linkTemplate = `<li><a href="#">${i + 1}</a></li>`;
+      linkContainer.innerHTML += linkTemplate;
+   }
 }
 
-appendPageLinks();
+appendPageLinks(dataList);
 
 
 // Feel free to try out adding the search feature and pagination search results
