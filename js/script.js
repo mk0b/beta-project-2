@@ -130,6 +130,7 @@ const appendPageLinks = (list) => {
             links[jj].className = '';
          }
          clickedLink.className = 'active';
+         showPage(list, clickedLink.innerHTML);
       }
    });
 }
